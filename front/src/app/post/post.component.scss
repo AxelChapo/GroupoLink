@@ -1,0 +1,21 @@
+.postCard {
+  margin: 1%;
+  &__data {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    &--likes {
+      display: flex;
+      flex-direction: row;
+    }
+    &--button {
+      button{
+        border: none;
+      }
+    }
+  }
+}
+
+i {
+  margin-right: 5px;
+}

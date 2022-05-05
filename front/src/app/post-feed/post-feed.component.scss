@@ -1,0 +1,76 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  &__feed {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: flex-end;
+    width: 60%;
+    &--post {
+      background-color: #d2d2d2;
+      width: 90%;
+      border: 1px solid rgba(0, 0, 0, 0.5);
+      border-radius: 5px;
+      box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.2);
+      margin-bottom: 1%;
+    }
+  }
+}
+
+.create {
+  display: flex;
+  flex-direction: column;
+  align-content: space-around;
+  justify-content: flex-start;
+  text-align: justify;
+  width: 52%;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  box-shadow: 1px 1px 15px gray;
+  margin-bottom: 1%;
+  padding: 1%;
+  &__field {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: justify;
+    margin: 1%;
+    width: 100%;
+    input {
+      display: none;
+    }
+    i {
+      border: none;
+      margin: 1%;
+      background-color: rgba(0, 0, 0, 0);
+      width: 50px;
+      height: 50px;
+    }
+    textarea {
+      width: 97%;
+      height: 45px;
+      border: 1px solid rgba(0, 0, 0, 0.3);
+      border-radius: 5px;
+      box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.2);
+    }
+  }
+  &__submit {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    button {
+      width: 30%;
+      height: 20px;
+      background-color: rgb(25, 43, 73);
+      color: rgb(190, 190, 190);
+      border-radius: 5px;
+      border: none;
+      box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.2);
+    }
+  }
+}

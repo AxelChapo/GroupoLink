@@ -1,0 +1,24 @@
+<div class="main">
+  <div class="loginForm">
+    <h2>Déjà inscrit ?</h2>
+    <form class="loginForm__form" method="post">
+      <div class="loginForm__form--field">
+        <label for="userEmail">Email :</label>
+        <input type="text" id="userEmail" name="user_email">
+      </div>
+      <div class="loginForm__form--field">
+        <label for="password">Mot de passe :</label>
+        <input type="password" id="password" name="user_password">
+      </div>
+      <div class="loginForm__submit">
+        <button>Connexion</button>  <!--(click)="formValidation"-->
+      </div>
+    </form>
+
+  </div>
+  <div class="signup">
+    <p class="signup__line"></p>
+    <p class="signup__info">Nouveau ici ?</p>
+    <a routerLink="signup" class="signup__link">S'inscrire</a>
+  </div>
+</div>
