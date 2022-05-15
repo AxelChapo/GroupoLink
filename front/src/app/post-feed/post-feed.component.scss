@@ -8,15 +8,7 @@
     flex-direction: column-reverse;
     align-items: center;
     justify-content: flex-end;
-    width: 60%;
-    &--post {
-      background-color: #d2d2d2;
-      width: 90%;
-      border: 1px solid rgba(0, 0, 0, 0.5);
-      border-radius: 5px;
-      box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.2);
-      margin-bottom: 1%;
-    }
+    width: 54%;
   }
 }
 
@@ -62,15 +54,15 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    button {
-      width: 30%;
-      height: 20px;
-      background-color: rgb(25, 43, 73);
-      color: rgb(190, 190, 190);
-      border-radius: 5px;
-      border: none;
-      box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.2);
-    }
   }
+}
+
+button {
+  width: 30%;
+  height: 20px;
+  background-color: rgb(25, 43, 73);
+  color: rgb(190, 190, 190);
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.2);
 }

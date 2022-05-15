@@ -1,1 +1,18 @@
+<div class="main">
+  <div class="displayCommentaries">
+    <div class="postCard">
+      <a routerLink="/post-feed">Retour</a>
+      <p class="postCard__creator">{{post.creatorName}}</p>
+      <p class="postCard__txt">{{ post.textContent }}</p>
+      <div class="postCard__data">
+        <button class="postCard__data--likes" (click)="onLike()"><i class="fa-solid fa-heart"></i>{{post.likes}}</button>
+        <p class="postCard__data--date">{{post.createdDate | date: 'd MMM yyyy'}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="commentaries">
+    <textarea></textarea>
+    <button>Envoyer</button>
+  </div>
+</div>
 

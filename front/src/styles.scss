@@ -7,3 +7,33 @@ body {
 a {
   text-decoration: none;
 }
+
+app-post {
+  width: 100%;
+}
+
+.postCard {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  box-shadow: 1px 1px 15px gray;
+  padding: 1%;
+  margin-bottom: 1%;
+  &__data {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    &--likes {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      border: none;
+      background: none;
+    }
+    &--commentaries {
+      border: none;
+      background: none;
+    }
+  }
+}

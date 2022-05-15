@@ -12,21 +12,24 @@ export class PostService {
       textContent: 'voici le post 1',
       creatorName: 'Personne 1',
       createdDate: new Date(),
-      likes: 11,
+      likes: 0,
+      liked: false
     },
     {
       id: 2,
       textContent: 'voici le post 2',
       creatorName: 'Personne 2',
       createdDate: new Date(),
-      likes: 22,
+      likes: 0,
+      liked: false
     },
     {
       id: 3,
       textContent: 'voici le post 3',
       creatorName: 'Personne 3',
       createdDate: new Date(),
-      likes: 33,
+      likes: 0,
+      liked: false
     },
   ];
 

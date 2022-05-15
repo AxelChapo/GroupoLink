@@ -2,10 +2,8 @@
   <p class="postCard__creator">{{post.creatorName}}</p>
   <p class="postCard__txt">{{ post.textContent }}</p>
   <div class="postCard__data">
-    <div class="postCard__data__button">
-      <p class="postCard__data--likes"><i class="fa-solid fa-heart"></i>{{post.likes}}</p>
-      <button (click)="onViewPost()"><i class="fa-solid fa-comment"></i></button>
-    </div>
+    <button class="postCard__data--likes" (click)="onLike()"><i class="fa-solid fa-heart"></i>{{post.likes}}</button>
+    <button class="postCard__data--commentaries" (click)="onViewPost()"><i class="fa-solid fa-comment"></i></button>
     <p class="postCard__data--date">{{post.createdDate | date: 'd MMM yyyy'}}</p>
   </div>
 </div>
