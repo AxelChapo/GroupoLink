@@ -1,0 +1,29 @@
+<div class="main">
+  <div class="profile">
+    <div class="profile__personalData">
+      <div class="profile__personalData--txt">
+        <p>Nom Prénom</p>
+        <p>Département:</p>
+        <p>email:</p>
+      </div>
+      <div *ngIf="modify" class="profile__personalData--field">
+        <div>
+          <input type="text" id="lastName" name="user_last_name">
+          <input type="text" id="firstName" name="user_first_name">
+        </div>
+        <input type="text" id="department" name="user_department">
+        <input type="text" id="email" name="user_email">
+      </div>
+      <div class="profile__personalData--img">
+        <img (click)="uploadImg()" src="assets/img/icon.svg">
+        <input type="file" name="user_img" #imgInput>
+      </div>
+    </div>
+  </div>
+  <div class="button">
+    <button (click)="profileModif()" class="button__button--modify">Modifier</button>
+    <button class="button__button--delete">Supprimer</button>
+  </div>
+</div>
+
+

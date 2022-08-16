@@ -1,0 +1,37 @@
+<div class="main">
+  <div class="signupForm">
+    <form [formGroup]="userForm">
+      <div class="signupForm__field">
+        <label for="lastName">Nom : </label>
+        <input type="text" id="lastName" formControlName="lastName">
+      </div>
+      <div class="signupForm__field">
+        <label for="firstName">Prénom :</label>
+        <input type="text" id="firstName" formControlName="firstName">
+      </div>
+      <div class="signupForm__field">
+        <label for="birthDate">Date de naissance</label>
+        <input type="date" id="birthDate" formControlName="birthDate">
+      </div>
+      <div class="signupForm__field">
+        <label for="department">Département de l'entreprise:</label>
+        <input type="text" id="department" formControlName="department">
+      </div>
+      <div class="signupForm__field">
+        <label for="email">Email:</label>
+        <input type="text" id="email" formControlName="email">
+      </div>
+      <div class="signupForm__field">
+        <label for="password">Mot de passe :</label>
+        <input type="password" id="password" formControlName="password">
+      </div>
+      <div class="signupForm__field">
+        <label for="passwordCheck">Vérification du mot de passe :</label>
+        <input type="password" id="passwordCheck" formControlName="passwordCheck">
+      </div>
+      <div class="signupForm__submit">
+        <button (click)="signupSubmit()">Valider</button>
+      </div>
+    </form>
+  </div>
+</div>
