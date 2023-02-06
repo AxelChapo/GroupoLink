@@ -50,29 +50,6 @@
   }
 }
 
-.button {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-  width: 75%;
-  &__button {
-    color: rgb(190, 190, 190);
-    &--modify {
-      border-radius: 15px;
-      border: none;
-      box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.2);
-      background-color: rgb(255, 153, 0);
-      margin-right: 1%;
-    }
-    &--delete {
-      border-radius: 15px;
-      border: none;
-      box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.2);
-      background-color: rgb(255, 51, 0);
-    }
-  }
-}
-
 @media screen and (max-device-width: 500px) {
   .profile {
     width: 80%;

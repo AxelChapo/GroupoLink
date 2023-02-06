@@ -1,4 +1,6 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { User } from "../core/models/user.model";
+import { AuthService } from "../core/services/auth.service";
 
 @Component({
   selector: 'app-user-profile',
@@ -7,20 +9,23 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 })
 export class UserProfileComponent implements OnInit {
 
-  modify!: boolean;
-  @ViewChild('imgInput') imgInput: ElementRef | undefined;
+  user: User = new User();
 
-  constructor() { }
+  constructor(private auth: AuthService) { }
 
   ngOnInit(): void {
+    this.getOneProfile();
   }
 
-  uploadImg() {
-    // @ts-ignore
-    this.imgInput.nativeElement.click();
-  }
-
-  profileModif() {
-    this.modify = true;
-  }
+  getOneProfile() {
+    this.auth.login();
+    fetch('http://localhost:3000/API/auth/me', {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('userLoginData') ?? '{}').token
+      },
+    }).then(response => response.json()).then(user => this.user = user);
+  };
 }
