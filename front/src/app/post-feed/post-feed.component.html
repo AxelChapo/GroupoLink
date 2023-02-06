@@ -1,21 +1,18 @@
 <div class="main">
   <div class="create">
-    <form method="post" [formGroup]="postDeposit"> <!-- formulaire création post -->
+    <form method="post">
       <div class="create__field">
         <label for="textContent">Entrez du texte</label>
-        <textarea id="textContent" name="text-content" formControlName="textContent"></textarea>
-        <input type="file" name="user_img" formControlName="image" (change)="onFileSelected($event)" #imgInput>
-        <div>
-          {{fileName || "Aucun fichier téléversé."}}
-          <i (click)="uploadImg()" class="fa-solid fa-camera"></i>
-        </div>
+        <textarea id="textContent" name="text-content" #txtInput></textarea>
+        <i (click)="uploadImg()" class="fa-solid fa-camera"></i>
+        <input type="file" name="user_img" #imgInput>
       </div>
       <div class="create__submit">
-        <button (click)="postSubmit()">Envoyer</button> <!--appel de la fonction d'envoi de post-->
+        <button (click)="postSubmit()">Envoyer</button>
       </div>
     </form>
   </div>
   <div class="main__feed">
-    <app-post *ngFor="let post of posts" [post]="post"></app-post> <!-- affichage des posts -->
+    <app-post *ngFor="let post of posts" [post]="post"></app-post>
   </div>
 </div>

@@ -1,10 +1,8 @@
-import {User} from "./user.model";
-
 export class Post {
-  _id!: number;
+  id!: number;
   textContent!: string;
   imgUrl!: string;
-  user!: User;
+  userId!: string;
   createdDate!: Date;
   likes!: number;
   liked!: boolean;

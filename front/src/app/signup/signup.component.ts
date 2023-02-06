@@ -19,13 +19,12 @@ export class SignupComponent implements OnInit {
   userForm: FormGroup;
 
   constructor() {
-    //vérification si les 2 mots de passe sont identiques
     let checkPasswords: ValidatorFn = (group: AbstractControl):  ValidationErrors | null => {
       let pass = group.get('password')?.value;
       let confirmPass = group.get('passwordCheck')?.value
       return pass === confirmPass ? null : { notSame: true }
     }
-    //récupération/vérification des données du form
+
     this.userForm = new FormGroup({
       lastName: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z \-]*')]),
       firstName: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z \-]*')]),
@@ -40,33 +39,36 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  signupSubmit() {
-    //vérification intéraction avec toutes les cases
+  onFormSubmit() {
     this.userForm.markAllAsTouched();
-    //appel de l'API si le formulaire est valide
     if (this.userForm.valid){
-      fetch('http://localhost:3000/API/auth/signup', {
-        method: "POST",
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(this.userForm.value)
-      }).then(response => {
-        if (response.status === 401) {
-          alert("Veuillez remplir tous les champs");
-          throw new Error();
-          //afficher message erreur
-        }
-        return response.json();
-      }).then(response => {
-        // @ts-ignore
-        location.replace('');
-      });
-    }
-    //envoi de l'erreur
-    else {
-      alert("erreur formulaire");
+      console.log('formulaire OK');
+    } else {
+      console.log('erreur formulaire');
     }
   }
+
+  signupSubmit() {
+    let userSignupData = {
+      lastName: this.userForm.get('lastName')?.value,
+      firstName: this.userForm.get('firstName')?.value,
+      birthDate: this.userForm.get('birthDate')?.value,
+      department: this.userForm.get('Department')?.value,
+      email: this.userForm.get('email')?.value,
+      password: this.userForm.get('password')?.value,
+    }
+    fetch('http://localhost:3000/API/auth/signup', {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(userSignupData)
+    }).then(response => response.json()).then(response => {
+      // @ts-ignore
+      localStorage.setItem('userSignupData', userSignupData);
+      location.replace('/post-feed');
+    });
+  }
+
 }

@@ -1,14 +1,14 @@
 <div class="postCard">
   <div class="postCard__head">
-    <p class="postCard__head--creator">{{post.user?.firstName}} {{post.user?.lastName}}</p>
+    <p class="postCard__head--creator">{{post.userId}}</p>
     <div>
-      <button [routerLink]="'/post/' + post._id" class="postCard__head--edit"><i class="fa-solid fa-pencil"></i></button> <!--appel de la fonction d'édition d'un post-->
-      <button (click)="postDelete()" class="postCard__head--delete"><i class="fa-solid fa-trash"></i></button> <!--appel de la fonction de supression d'un post-->
+      <button (click)="postEdit()" class="postCard__head--edit"><i class="fa-solid fa-pencil"></i></button>
+      <button (click)="postDelete()" class="postCard__head--delete"><i class="fa-solid fa-trash"></i></button>
     </div>
   </div>
   <p class="postCard__txt">{{ post.textContent }}</p>
   <div class="postCard__data">
-    <button class="postCard__data--likes" (click)="onLike()"><i class="fa-solid fa-heart"></i>{{post.likes}}</button> <!--appel de la fonction de gestion des likes-->
-    <p class="postCard__data--date">{{ post.createdDate | date: 'd MMM yyyy' }}</p>
+    <button class="postCard__data--likes" (click)="onLike()"><i class="fa-solid fa-heart"></i>{{post.likes}}</button>
+    <p class="postCard__data--date">{{post.createdDate | date: 'd MMM yyyy'}}</p>
   </div>
 </div>

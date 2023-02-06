@@ -6,6 +6,7 @@ exports.signup = (req, res, next) => {
   bcrypt.hash(req.body.password, 10)
       .then(hash => {
           const user = new User({
+              id: req.body.id,
               firstName: req.body.firstName,
               lastName: req.body.lastName,
               birthDate: req.body.birthDate,
@@ -21,7 +22,7 @@ exports.signup = (req, res, next) => {
 };
 
 exports.login = (req, res, next) => {
-    User.findOne({email: req.body.email})
+    User.findOne({_id: req.body.id})
         .then(user => {
             if (!user) {
                 return res.status(401).json({error: 'Utilisateur non trouvé'});
@@ -32,9 +33,9 @@ exports.login = (req, res, next) => {
                         return res.status(401).json({error: 'Mot de passe incorrect'});
                     }
                     res.status(200).json({
-                        userId: user._id,
+                        userId: user.id,
                         token: jwt.sign(
-                            {userId: user._id, admin: user.admin},
+                            {userId: user._id},
                             '@AcRwn)q"x&46/=',
                             {expiresIn: '24h'},
                         )
@@ -45,22 +46,29 @@ exports.login = (req, res, next) => {
         .catch(error => res.status(500).json({error}));
 };
 
-exports.logout = (req, res, next) => {
-    User
-}
-
 exports.getOneProfile = (req, res, next) => {
-    User.findOne({_id: req.auth.userId})
+    User.findOne({_id: req.body.id})
         .then(user => {
             if (!user) {
                 return res.status(401).json({error: 'Utilisateur non trouvé !'});
             }
-            return res.status(200).json(user);
+
         })
-        .catch(error => res.status(500).json({error}));
+        .catch(error => res.status(401).json({}))
 };
 
- /**exports.deleteProfile = (req, res, next) => {
+exports.modifyProfile = (req, res, next) => {
+    const userObject = req.file ?
+    {
+        ...JSON.parse(req.body.user),
+        imageUrl: `${req.protocol}://${req.get('host')}/images/${req.filename}`
+    } : {...req.body};
+    User.updateOne({_id: req.body.id}, {...userObject, _id: req.body.id})
+        .then(() => res.status(200).json({message: 'Profile mis à jour !'}))
+        .catch(error => res.status(400).json({error}));
+};
+
+ exports.deleteProfile = (req, res, next) => {
     user.findOne({_id: req.body.id})
         .then(user => {
             const filename = user.imageUrl.split('/images')[1];
@@ -71,4 +79,4 @@ exports.getOneProfile = (req, res, next) => {
             });
         })
         .catch(error => res.status(500).json({error}));
- };**/
+ };

@@ -6,7 +6,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
-mongoose.connect('mongodb+srv://AxelJouveaux:test1234@atlascluster.b5rilaj.mongodb.net/?retryWrites=true&w=majority',
+mongoose.connect('mongodb+srv://AxelJouveaux:test1234@cluster0.bjhbu.mongodb.net/?retryWrites=true&w=majority',
     { useNewUrlParser: true,
         useUnifiedTopology: true })
     .then(() => console.log('Connexion à MongoDB réussie !'))
