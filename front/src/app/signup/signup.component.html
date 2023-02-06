@@ -1,121 +1,36 @@
 <div class="main">
   <div class="signupForm">
-    <form [formGroup]="userForm"> <!-- Formulaire d'inscription -->
+    <form [formGroup]="userForm">
       <div class="signupForm__field">
-        <label for="lastName">Nom :
-          <span class="danger">*</span>
-        </label>
-        <input type="text" id="lastName" formControlName="lastName"
-               [class.valid]="userForm.get('lastName')?.valid && (userForm.get('lastName')?.dirty || userForm.get('lastName')?.touched)"
-               [class.invalid]="userForm.get('lastName')?.invalid && (userForm.get('lastName')?.dirty || userForm.get('lastName')?.touched)">
-        <div *ngIf="userForm.get('lastName')?.invalid && userForm.get('lastName')?.errors && (userForm.get('lastName')?.dirty || userForm.get('lastName')?.touched)">
-          <small class="danger" *ngIf="userForm.get('lastName')?.hasError('required')">
-            Ce champ est obligatoire.
-          </small>
-          <small class="danger" *ngIf="userForm.get('lastName')?.hasError('pattern')">
-            Ce champ ne doit contenir que des lettres.
-          </small>
-        </div>
+        <label for="lastName">Nom : </label>
+        <input type="text" id="lastName" formControlName="lastName">
       </div>
-
       <div class="signupForm__field">
-        <label for="firstName">Prénom :
-          <span class="danger">*</span>
-        </label>
-        <input type="text" id="firstName" formControlName="firstName"
-          [class.valid]="userForm.get('firstName')?.valid && (userForm.get('firstName')?.dirty || userForm.get('firstName')?.touched)"
-          [class.invalid]="userForm.get('firstName')?.invalid && (userForm.get('firstName')?.dirty || userForm.get('firstName')?.touched)">
-        <div *ngIf="userForm.get('firstName')?.invalid && userForm.get('firstName')?.errors && (userForm.get('firstName')?.dirty || userForm.get('firstName')?.touched)">
-          <small class="danger" *ngIf="userForm.get('firstName')?.hasError('required')">
-            Ce champ est obligatoire.
-          </small>
-          <small class="danger" *ngIf="userForm.get('firstName')?.hasError('pattern')">
-            Ce champ ne doit contenir que des lettres.
-          </small>
-        </div>
+        <label for="firstName">Prénom :</label>
+        <input type="text" id="firstName" formControlName="firstName">
       </div>
-
       <div class="signupForm__field">
-        <label for="birthDate">Date de naissance
-          <span class="danger">*</span>
-        </label>
-        <input type="date" id="birthDate" formControlName="birthDate" max="2022-01-01"
-          [class.valid]="userForm.get('birthDate')?.valid && (userForm.get('birthDate')?.dirty || userForm.get('birthDate')?.touched)"
-          [class.invalid]="userForm.get('birthDate')?.invalid && (userForm.get('birthDate')?.dirty || userForm.get('birthDate')?.touched)">
-        <div *ngIf="userForm.get('birthDate')?.invalid && userForm.get('birthDate')?.errors && (userForm.get('birthDate')?.dirty || userForm.get('birthDate')?.touched)">
-          <small class="danger" *ngIf="userForm.get('birthDate')?.hasError('required')">
-            Ce champ est obligatoire.
-          </small>
-        </div>
+        <label for="birthDate">Date de naissance</label>
+        <input type="date" id="birthDate" formControlName="birthDate">
       </div>
-
       <div class="signupForm__field">
-        <label for="department">Département de l'entreprise:
-          <span class="danger">*</span>
-        </label>
-        <input type="text" id="department" formControlName="department"
-          [class.valid]="userForm.get('department')?.valid && (userForm.get('department')?.dirty || userForm.get('department')?.touched)"
-          [class.invalid]="userForm.get('department')?.invalid && (userForm.get('department')?.dirty || userForm.get('department')?.touched)">
-        <div *ngIf="userForm.get('department')?.invalid && userForm.get('department')?.errors && (userForm.get('department')?.dirty || userForm.get('department')?.touched)">
-          <small class="danger" *ngIf="userForm.get('department')?.hasError('required')">
-            Ce champ est obligatoire.
-          </small>
-        </div>
+        <label for="department">Département de l'entreprise:</label>
+        <input type="text" id="department" formControlName="department">
       </div>
-
       <div class="signupForm__field">
-        <label for="email">Email:
-          <span class="danger">*</span>
-        </label>
-        <input type="text" id="email" formControlName="email"
-          [class.valid]="userForm.get('email')?.valid && (userForm.get('email')?.dirty || userForm.get('email')?.touched)"
-          [class.invalid]="userForm.get('email')?.invalid && (userForm.get('email')?.dirty || userForm.get('email')?.touched)">
-        <div *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.errors && (userForm.get('email')?.dirty || userForm.get('email')?.touched)">
-          <small class="danger" *ngIf="userForm.get('email')?.hasError('required')">
-            Ce champ est obligatoire.
-          </small>
-          <small class="danger" *ngIf="userForm.get('email')?.hasError('email')">
-            Adresse email invalide.
-          </small>
-        </div>
+        <label for="email">Email:</label>
+        <input type="text" id="email" formControlName="email">
       </div>
-
       <div class="signupForm__field">
-        <label for="password">Mot de passe :
-          <span class="danger">*</span>
-        </label>
-        <input type="password" id="password" formControlName="password"
-          [class.valid]="userForm.get('password')?.valid && (userForm.get('password')?.dirty || userForm.get('password')?.touched)"
-          [class.invalid]="userForm.get('password')?.invalid && (userForm.get('password')?.dirty || userForm.get('password')?.touched)">
-        <div *ngIf="userForm.get('password')?.invalid && userForm.get('password')?.errors && (userForm.get('password')?.dirty || userForm.get('password')?.touched)">
-          <small class="danger" *ngIf="userForm.get('password')?.hasError('required')">
-            Ce champ est obligatoire.
-          </small>
-          <small class="danger" *ngIf="userForm.get('password')?.hasError('minlength')">
-            Mot de passe trop court (8 caractères min).
-          </small>
-        </div>
+        <label for="password">Mot de passe :</label>
+        <input type="password" id="password" formControlName="password">
       </div>
-
       <div class="signupForm__field">
-        <label for="passwordCheck">Vérification du mot de passe :
-          <span class="danger">*</span>
-        </label>
-        <input type="password" id="passwordCheck" formControlName="passwordCheck"
-          [class.valid]="userForm.get('passwordCheck')?.valid && (userForm.get('passwordCheck')?.dirty || userForm.get('passwordCheck')?.touched)"
-          [class.invalid]="userForm.get('passwordCheck')?.invalid && (userForm.get('passwordCheck')?.dirty || userForm.get('passwordCheck')?.touched)">
-        <div *ngIf="userForm.get('passwordCheck')?.invalid && userForm.get('passwordCheck')?.errors && (userForm.get('passwordCheck')?.dirty || userForm.get('passwordCheck')?.touched)">
-          <small class="danger" *ngIf="userForm.get('passwordCheck')?.hasError('required')">
-            Ce champ est obligatoire.
-          </small>
-          <small class="danger" *ngIf="userForm.get('passwordCheck')?.hasError('minlength')">
-            Mot de passe trop court (8 caractères min).
-          </small>
-        </div>
+        <label for="passwordCheck">Vérification du mot de passe :</label>
+        <input type="password" id="passwordCheck" formControlName="passwordCheck">
       </div>
-
       <div class="signupForm__submit">
-        <button [disabled]="userForm.invalid" (click)="signupSubmit()">Valider</button> <!-- appel de la fonction d'envoi du form -->
+        <button (click)="signupSubmit()">Valider</button>
       </div>
     </form>
   </div>
