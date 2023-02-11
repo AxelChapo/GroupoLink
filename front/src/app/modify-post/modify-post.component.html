@@ -1,0 +1,12 @@
+<div class="postCard">
+  <form method="post" [formGroup]="postModify">
+    <label for="textContent"></label>
+    <textarea id="textContent">{{ this.post.textContent }}</textarea>
+    <i (click)="uploadImg()" class="fa-solid fa-camera"></i>
+    <input type="file" name="user_img" formControlName="imageUrl" #imgInput>
+  </form>
+  <div>
+    <button (click)="submitModifiedPost()"></button>
+  </div>
+
+</div>

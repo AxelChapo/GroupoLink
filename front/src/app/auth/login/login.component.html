@@ -1,0 +1,27 @@
+<div class="main">
+  <div class="loginForm">
+    <h2>Déjà inscrit ?</h2>
+    <form class="loginForm__form" method="post" [formGroup]="loginForm"> <!--formulaire de connexion-->
+
+      <div class="loginForm__form--field">
+        <label for="userEmail">Email :</label>
+        <input type="text" id="userEmail" name="user_email" formControlName="email">
+      </div>
+
+      <div class="loginForm__form--field">
+        <label for="password">Mot de passe :</label>
+        <input type="password" id="password" name="user_password" formControlName="password">
+      </div>
+
+      <div class="loginForm__submit">
+        <button (click)="loginSubmit()">Connexion</button> <!--appel de la fonction de connexion-->
+      </div>
+
+    </form>
+
+  </div>
+  <div class="signup">
+    <p class="signup__line"></p>
+    <a routerLink="../signup">Nouveau ici ? S'inscrire</a> <!-- lien vers la page d'inscription -->
+  </div>
+</div>

@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
-const { Schema } = require("mongoose");
+const { Schema, mongo} = require("mongoose");
+const {stringify} = require("nodemon/lib/utils");
 
 const postSchema = new Schema({
-    userId: { type: Number, required: true },
+    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     textContent: { type: String, required: true },
     imageUrl: { type: String },
-    userLikes: { type: Number, required: true },
+    userLikes: { type: [String], required: true, default: []},
     createdDate: { type: Date, required: true},
 });
 
