@@ -43,7 +43,10 @@ export class PostService {
         'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('userLoginData') ?? '{}').token
       },
       // @ts-ignore
-      body: form//envoie du contenu du post à L'API
+      body: JSON.stringify({
+        post: JSON.stringify(post),
+        image: image
+      })//envoie du contenu du post à L'API
     }).then(response => response.json()).then(response => {
       //rechargement du component
       //location.reload();

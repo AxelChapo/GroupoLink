@@ -2,7 +2,9 @@ const Post = require('../models/post');
 const fs = require('fs');
 
 exports.createPost = (req, res, next) => {
-    const postObject = req.body.post;
+    console.log(req.body);
+    console.log("test");
+    const postObject = JSON.parse(req.body.post);
     delete postObject._id;
     const post = new Post({
         ...postObject,
@@ -58,7 +60,7 @@ exports.deletePost = (req, res, next) => {
                 res.status(401).json({message: 'Not authorized'});
             }
             else {
-                const filename = post.imageUrl.split('/images/')[1];
+                const filename = post.imageUrl?.split('/images/')[1];
                 fs.unlink(`images/${filename}`, () => {
                     Post.deleteOne({_id: req.params.id})
                         .then(() => res.status(200).json({message: 'Post supprimé'}))
@@ -66,11 +68,11 @@ exports.deletePost = (req, res, next) => {
                 });
             }
         })
-        //.catch(error => res.status(500).json({error}));
+        .catch(error => res.status(500).json({error}));
 };
 
 exports.modifyPost = (req, res, next) => {
-    if (post.userId != req.params.id && !req.auth.admin) {
+    if (post.user.valueOf() != req.auth.userId && !req.auth.admin) {
         res.status(401).json({message: 'Not authorized'});
     }
     else {
