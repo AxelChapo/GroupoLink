@@ -1,12 +1,18 @@
-<div class="postCard">
-  <form method="post" [formGroup]="postModify">
-    <label for="textContent"></label>
-    <textarea id="textContent">{{ this.post.textContent }}</textarea>
-    <i (click)="uploadImg()" class="fa-solid fa-camera"></i>
-    <input type="file" name="user_img" formControlName="imageUrl" #imgInput>
-  </form>
-  <div>
-    <button (click)="submitModifiedPost()"></button>
+<div class="main">
+  <div class="modify">
+    <form method="post" [formGroup]="postModify">
+      <div class="modify__field">
+        <label for="textContent"></label>
+        <textarea id="textContent" formControlName="textContent"></textarea>
+        <input type="file" name="user_img" formControlName="image" (change)="onFileSelected($event)" #imgInput>
+        <div>
+          {{fileName || "Aucun fichier téléversé."}}
+          <i (click)="uploadImg()" class="fa-solid fa-camera"></i>
+        </div>
+      </div>
+    </form>
+    <div class="modify__submit">
+      <button (click)="submitModifiedPost()">Modifier</button>
+    </div>
   </div>
-
 </div>

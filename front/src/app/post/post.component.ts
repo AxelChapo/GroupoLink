@@ -10,7 +10,9 @@ import { Router } from "@angular/router";
 })
 
 export class PostComponent implements OnInit {
+
   @Input() post!: Post;
+  posts!: Post[];
 
 
   constructor(private postService: PostService,
@@ -20,8 +22,12 @@ export class PostComponent implements OnInit {
   }
 
   postDelete() {
-    this.postService.postDelete(this.post);
+    this.postService.postDelete(this.post).then(post => {
+      this.postService.getAllPosts().then(posts => this.posts = posts);
+    });
   }
+
+
 
   onLike() {
     this.postService.onLike();

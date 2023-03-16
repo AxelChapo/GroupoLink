@@ -71,7 +71,10 @@ exports.deletePost = (req, res, next) => {
         .catch(error => res.status(500).json({error}));
 };
 
+
+//TODO: tester la route avec postman
 exports.modifyPost = (req, res, next) => {
+    return res.status(200).json({})
     if (post.user.valueOf() != req.auth.userId && !req.auth.admin) {
         res.status(401).json({message: 'Not authorized'});
     }

@@ -35,28 +35,23 @@ export class PostService {
     form.append('post', JSON.stringify(post));
     form.append('image', image);
     //appel de l'API/createPost
-    fetch('http://localhost:3000/API/post/', {
+    return fetch('http://localhost:3000/API/post/', {
       method: "POST",
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('userLoginData') ?? '{}').token
       },
       // @ts-ignore
-      body: JSON.stringify({
-        post: JSON.stringify(post),
-        image: image
-      })//envoie du contenu du post à L'API
-    }).then(response => response.json()).then(response => {
-      //rechargement du component
-      //location.reload();
-    });
+      body: form
+    }).then(response => response.json())
   }
+
+  //TODO: tester l'upload d'image
 
   submitModifiedPost(post: Post) {
     //appel de l'API/post
     console.log(post);
-    fetch('http://loccalhost:3000/API/' + post._id, {
+    fetch('http://loccalhost:3000/API/post/' + post._id, {
       method: 'PUT',
       headers: {
         'Accept': 'application/json',
@@ -70,7 +65,7 @@ export class PostService {
   postDelete(post: Post) {
     //appel de l'API/post
     console.log(post);
-    fetch('http://localhost:3000/API/post/' + post._id, {
+    return fetch('http://localhost:3000/API/post/' + post._id, {
       method: 'DELETE',
       headers: {
         'Accept': 'application/json',
@@ -78,6 +73,17 @@ export class PostService {
         'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('userLoginData') ?? '{}').token
       },
     })
+  }
+
+  getOnePost(id: number) {
+    return fetch('http://localhost:3000/API/post/' + id, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('userLoginData') ?? '{}').token
+      },
+    }).then(response => response.json());
   }
 
   onLike() {
@@ -94,8 +100,6 @@ export class PostService {
       body: JSON.stringify(post) //envoi du post en JSON
     }).then(response => response.json())
   }
-
-  getOnePost() {
-    let post
-  }
 }
+
+
