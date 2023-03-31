@@ -16,6 +16,6 @@
     </form>
   </div>
   <div class="main__feed">
-    <app-post *ngFor="let post of posts" [post]="post"></app-post> <!-- affichage des posts -->
+    <app-post *ngFor="let post of posts" [post]="post" (onDelete)="refreshPost()"></app-post> <!-- affichage des posts -->
   </div>
 </div>

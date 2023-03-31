@@ -38,7 +38,8 @@ exports.login = (req, res, next) => {
                             {userId: user._id, admin: user.admin},
                             process.env.TOKEN_SECRET,
                             {expiresIn: '24h'},
-                        )
+                        ),
+                        admin: user.admin,
                     });
                 })
                 .catch(error => res.status(500).json({error}));

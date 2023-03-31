@@ -40,13 +40,24 @@ i {
   color:  #FD2D01;
 }
 
-@media screen and (max-device-width: 450px) {
+@media screen and (max-device-width: 650px) {
   .main {
     &__logo {
       padding: 0;
       img {
         max-width: 250px;
      }
+    }
+  }
+}
+
+@media screen and (max-device-width: 350px) {
+  .main {
+    &__logo {
+      padding: 0;
+      img {
+        max-width: 200px;
+      }
     }
   }
 }

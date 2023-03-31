@@ -7,8 +7,18 @@
     </div>
   </div>
   <p class="postCard__txt">{{ post.textContent }}</p>
+  <div class="postCard__img">
+    <img [src]="post.imageUrl">
+  </div>
+
   <div class="postCard__data">
-    <button class="postCard__data--likes" (click)="onLike()"><i class="fa-solid fa-heart"></i>{{post.likes}}</button> <!--appel de la fonction de gestion des likes-->
+    <div class="postCard__data--likes">
+      <button (click)="onLike()"><i class="fa-solid fa-heart"></i></button><!--appel de la fonction de gestion des likes-->
+      <p>{{post.userLikes.length}}</p>
+    </div>
+
     <p class="postCard__data--date">{{ post.createdDate | date: 'd MMM yyyy' }}</p>
   </div>
 </div>
+
+<!-- *ngIf="post.user._id === localhost.userId | "-->

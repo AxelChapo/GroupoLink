@@ -17,14 +17,20 @@ i {
   box-shadow: 1px 1px 15px #FFD7D7;
   padding: 1%;
   margin-bottom: 1%;
+  color: #FFD7D7;
   &__head {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    button {
-      background-color: transparent;
-      border: none;
+  }
+  &__img{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    img {
+      max-width: 75%;
     }
   }
   &__data {
@@ -32,13 +38,14 @@ i {
     flex-direction: row;
     justify-content: space-between;
     &--likes {
-      color: #FFD7D7;
       display: flex;
       flex-direction: row;
       align-items: center;
-      border: none;
-      background: none;
     }
+  }
+  button {
+    background-color: transparent;
+    border: none;
   }
 }
 

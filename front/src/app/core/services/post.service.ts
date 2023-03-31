@@ -46,8 +46,6 @@ export class PostService {
     }).then(response => response.json())
   }
 
-  //TODO: tester l'upload d'image
-
   submitModifiedPost(post: Post) {
     //appel de l'API/post
     console.log(post);
@@ -72,7 +70,7 @@ export class PostService {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('userLoginData') ?? '{}').token
       },
-    })
+    }).then(response => response.json())
   }
 
   getOnePost(id: number) {
@@ -101,5 +99,3 @@ export class PostService {
     }).then(response => response.json())
   }
 }
-
-

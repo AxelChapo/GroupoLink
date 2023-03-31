@@ -15,7 +15,7 @@ export class PostFeedComponent implements OnInit {
 
   postDeposit: FormGroup;
   posts!: Post[];
-  fileName =  false;
+  fileName =  '';
   image!: File;
 
   @ViewChild('imgInput') imgInput: ElementRef | undefined;
@@ -47,11 +47,16 @@ export class PostFeedComponent implements OnInit {
     });
   }
 
+  refreshPost() {
+    this.postService.getAllPosts().then(posts => this.posts = posts);
+  }
+
   onFileSelected(event: Event) {
     // @ts-ignore
     const file:File = event.target.files[0];
     if (file) {
       this.image = file;
+      this.fileName = file.name;
     }
   }
 }

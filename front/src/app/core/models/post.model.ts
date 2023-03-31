@@ -3,9 +3,9 @@ import {User} from "./user.model";
 export class Post {
   _id!: number;
   textContent!: string;
-  imgUrl!: string;
+  imageUrl?: string;
   user!: User;
   createdDate!: Date;
-  likes!: number;
+  userLikes!: [];
   liked!: boolean;
 }

@@ -15,7 +15,7 @@ export class ModifyPostComponent implements OnInit {
   post!: Post;
   postModify: FormGroup;
   image!: File;
-  fileName =  '';
+  fileName!: string;
 
   @ViewChild('imgInput') imgInput: ElementRef | undefined;
 
@@ -34,6 +34,7 @@ export class ModifyPostComponent implements OnInit {
       this.postService.getOnePost(params['id']).then(post => {
         this.post = post;
         this.postModify.get('textContent')?.setValue(post.textContent);
+        this.fileName = this.post.imageUrl?.split('images/')[1] ?? '';
       });
     });
   }
@@ -56,6 +57,7 @@ export class ModifyPostComponent implements OnInit {
     const file:File = event.target.files[0];
     if (file) {
       this.image = file;
+      this.fileName = file.name;
     }
   }
 }
