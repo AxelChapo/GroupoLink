@@ -48,7 +48,6 @@ export class PostService {
 
   submitModifiedPost(post: Post) {
     //appel de l'API/post
-    console.log(post);
     fetch('http://loccalhost:3000/API/post/' + post._id, {
       method: 'PUT',
       headers: {
@@ -62,7 +61,6 @@ export class PostService {
 
   postDelete(post: Post) {
     //appel de l'API/post
-    console.log(post);
     return fetch('http://localhost:3000/API/post/' + post._id, {
       method: 'DELETE',
       headers: {
@@ -84,18 +82,15 @@ export class PostService {
     }).then(response => response.json());
   }
 
-  onLike() {
-    //récupération des données du post
-    let post = this.post;
+  onLike(id: number) {
     //appel de l'API/post
-    fetch('http://loccalhost:3000/API/', {
+    return fetch('http://localhost:3000/API/post/like/' + id, {
       method: 'PUT',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('userLoginData') ?? '{}').token
       },
-      body: JSON.stringify(post) //envoi du post en JSON
     }).then(response => response.json())
   }
 }

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const { Schema, mongo} = require("mongoose");
-const {stringify} = require("nodemon/lib/utils");
+const { Schema, mongo } = require("mongoose");
+const { stringify } = require("nodemon/lib/utils");
 
 const postSchema = new Schema({
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User'},

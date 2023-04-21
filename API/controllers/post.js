@@ -2,8 +2,6 @@ const Post = require('../models/post');
 const fs = require('fs');
 
 exports.createPost = (req, res, next) => {
-    console.log(req.body);
-    console.log("test");
     const postObject = JSON.parse(req.body.post);
     delete postObject._id;
     const post = new Post({
@@ -35,19 +33,13 @@ exports.getOnePost = (req, res, next) => {
 exports.likePost = (req, res, next) => {
     Post.findOne({_id: req.params.id})
         .then(post => {
-            if(req.body.like == 1) {
-                if(!post.usersLiked.inculdes(req.body.userId)){
-                    post.likes++;
-                    post.usersLiked.push(req.body.userId);
-                }
+            if(!post.userLikes.includes(req.auth.userId)){
+                post.userLikes.push(req.auth.userId);
             }
-            if(req.body.like == 0) {
-                if(post.usersLiked.include(req.body.userId)){
-                    post.usersLiked.remove(req.body.userId);
-                    post.likes--;
-                }
+            else{
+                post.userLikes.remove(req.auth.userId);
             }
-            post.updateOne({_id: req.params.id}, post)
+            Post.updateOne({_id: req.params.id}, post)
                 .then(post => res.status(200).json({message:'post mis à jour'}))
         })
         .catch(error => res.status(500).json({error}));
@@ -71,8 +63,6 @@ exports.deletePost = (req, res, next) => {
         .catch(error => res.status(500).json({error}));
 };
 
-
-//TODO: tester la route avec postman
 exports.modifyPost = (req, res, next) => {
     Post.findOne({_id: req.params.id}).then(post => {
         if (post.user.valueOf() != req.auth.userId && !req.auth.admin) {

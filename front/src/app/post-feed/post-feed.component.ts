@@ -32,7 +32,7 @@ export class PostFeedComponent implements OnInit {
 
   ngOnInit(): void {
     //récupération des post grâce à postService
-    this.postService.getAllPosts().then(posts => this.posts = posts);
+    this.refreshPost();
   }
 
   uploadImg() {
@@ -41,9 +41,8 @@ export class PostFeedComponent implements OnInit {
   }
 
   postSubmit() {
-    console.log(this.image);
     this.postService.postSubmit(this.postDeposit.value, this.image).then(post => {
-      this.postService.getAllPosts().then(posts => this.posts = posts);
+      this.refreshPost();
     });
   }
 

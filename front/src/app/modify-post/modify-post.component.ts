@@ -30,7 +30,6 @@ export class ModifyPostComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      console.log(params);
       this.postService.getOnePost(params['id']).then(post => {
         this.post = post;
         this.postModify.get('textContent')?.setValue(post.textContent);
@@ -45,7 +44,7 @@ export class ModifyPostComponent implements OnInit {
   }
 
   submitModifiedPost() {
-    console.log(this.image);
+
     this.postService.submitModifiedPost({
       ...this.post,
       ...this.postModify.value
