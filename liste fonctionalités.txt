@@ -1,7 +1,0 @@
-connexion (mail, pw);
-création utilisateur;
-déconnexion;
-affichage list post plus récent en premier;
-like;
-modération/admin;
-post txt img;
