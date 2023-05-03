@@ -48,7 +48,7 @@ export class PostService {
 
   submitModifiedPost(post: Post) {
     //appel de l'API/post
-    fetch('http://loccalhost:3000/API/post/' + post._id, {
+    return fetch('http://localhost:3000/API/post/' + post._id, {
       method: 'PUT',
       headers: {
         'Accept': 'application/json',

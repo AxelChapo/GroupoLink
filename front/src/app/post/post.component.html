@@ -11,7 +11,7 @@
     <img [src]="post.imageUrl">
   </div>
   <div class="postCard__data">
-    <div class="postCard__data--likes">
+    <div [ngClass]="{ liked: hasLiked() }" class="postCard__data--likes">
       <button (click)="onLike()"><i class="fa-solid fa-heart"></i></button><!--appel de la fonction de gestion des likes-->
       <p>{{post.userLikes.length}}</p>
     </div>

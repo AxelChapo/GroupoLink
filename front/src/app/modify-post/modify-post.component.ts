@@ -3,7 +3,7 @@ import { PostService } from "../core/services/post.service";
 import { Post } from "../core/models/post.model";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { AuthService } from "../core/services/auth.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-modify-post',
@@ -21,7 +21,8 @@ export class ModifyPostComponent implements OnInit {
 
   constructor(private postService: PostService,
               private auth: AuthService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private router: Router) {
     this.postModify = new FormGroup ({
       textContent: new FormControl('', [Validators.required]),
       image: new FormControl('')
@@ -44,11 +45,10 @@ export class ModifyPostComponent implements OnInit {
   }
 
   submitModifiedPost() {
-
     this.postService.submitModifiedPost({
       ...this.post,
       ...this.postModify.value
-    });
+    }).then(post => this.router.navigate(["/post-feed"]));
   }
 
   onFileSelected(event: Event) {

@@ -6,6 +6,6 @@ export class Post {
   imageUrl?: string;
   user!: User;
   createdDate!: Date;
-  userLikes!: [];
+  userLikes!: string[];
   liked!: boolean;
 }

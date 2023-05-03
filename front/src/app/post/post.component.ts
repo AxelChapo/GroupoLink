@@ -16,15 +16,15 @@ export class PostComponent implements OnInit {
   @Input() post!: Post;
   posts!: Post[];
   isAdminOrCreator =  false;
-  hasLiked = false;
+  userData = {userId: "0", admin: false, };
 
   constructor(private postService: PostService,
               private router: Router,
               private http: HttpClient) {
   }
   ngOnInit(): void {
-    const userData = localStorage.getItem('userLoginData') ?? '{}'
-    if (JSON.parse(userData).userId == this.post.user._id || JSON.parse(userData).admin == true) {
+    this.userData = JSON.parse(localStorage.getItem('userLoginData') ?? '{}')
+    if (this.userData.userId == this.post.user._id || this.userData.admin == true) {
       this.isAdminOrCreator = true;
     }
   }
@@ -39,6 +39,10 @@ export class PostComponent implements OnInit {
     this.postService.onLike(this.post._id).then(post => {
       this.onUpdate.emit()
     });
+  }
+
+  hasLiked() {
+    return this.post.userLikes.includes(this.userData.userId);
   }
 }
 

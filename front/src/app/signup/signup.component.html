@@ -5,7 +5,7 @@
         <label for="lastName">Nom :
           <span class="danger">*</span>
         </label>
-        <input type="text" id="lastName" formControlName="lastName"
+        <input type="text" id="lastName" formControlName="lastName" autocomplete="family-name"
                [class.valid]="userForm.get('lastName')?.valid && (userForm.get('lastName')?.dirty || userForm.get('lastName')?.touched)"
                [class.invalid]="userForm.get('lastName')?.invalid && (userForm.get('lastName')?.dirty || userForm.get('lastName')?.touched)">
         <div *ngIf="userForm.get('lastName')?.invalid && userForm.get('lastName')?.errors && (userForm.get('lastName')?.dirty || userForm.get('lastName')?.touched)">
@@ -22,7 +22,7 @@
         <label for="firstName">Prénom :
           <span class="danger">*</span>
         </label>
-        <input type="text" id="firstName" formControlName="firstName"
+        <input type="text" id="firstName" formControlName="firstName" autocomplete="given-name"
           [class.valid]="userForm.get('firstName')?.valid && (userForm.get('firstName')?.dirty || userForm.get('firstName')?.touched)"
           [class.invalid]="userForm.get('firstName')?.invalid && (userForm.get('firstName')?.dirty || userForm.get('firstName')?.touched)">
         <div *ngIf="userForm.get('firstName')?.invalid && userForm.get('firstName')?.errors && (userForm.get('firstName')?.dirty || userForm.get('firstName')?.touched)">
@@ -67,7 +67,7 @@
         <label for="email">Email:
           <span class="danger">*</span>
         </label>
-        <input type="text" id="email" formControlName="email"
+        <input type="text" id="email" formControlName="email" autocomplete="email"
           [class.valid]="userForm.get('email')?.valid && (userForm.get('email')?.dirty || userForm.get('email')?.touched)"
           [class.invalid]="userForm.get('email')?.invalid && (userForm.get('email')?.dirty || userForm.get('email')?.touched)">
         <div *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.errors && (userForm.get('email')?.dirty || userForm.get('email')?.touched)">
@@ -84,7 +84,7 @@
         <label for="password">Mot de passe :
           <span class="danger">*</span>
         </label>
-        <input type="password" id="password" formControlName="password"
+        <input type="password" id="password" formControlName="password" autocomplete="new-password"
           [class.valid]="userForm.get('password')?.valid && (userForm.get('password')?.dirty || userForm.get('password')?.touched)"
           [class.invalid]="userForm.get('password')?.invalid && (userForm.get('password')?.dirty || userForm.get('password')?.touched)">
         <div *ngIf="userForm.get('password')?.invalid && userForm.get('password')?.errors && (userForm.get('password')?.dirty || userForm.get('password')?.touched)">
@@ -101,7 +101,7 @@
         <label for="passwordCheck">Vérification du mot de passe :
           <span class="danger">*</span>
         </label>
-        <input type="password" id="passwordCheck" formControlName="passwordCheck"
+        <input type="password" id="passwordCheck" formControlName="passwordCheck" autocomplete="off"
           [class.valid]="userForm.get('passwordCheck')?.valid && (userForm.get('passwordCheck')?.dirty || userForm.get('passwordCheck')?.touched)"
           [class.invalid]="userForm.get('passwordCheck')?.invalid && (userForm.get('passwordCheck')?.dirty || userForm.get('passwordCheck')?.touched)">
         <div *ngIf="userForm.get('passwordCheck')?.invalid && userForm.get('passwordCheck')?.errors && (userForm.get('passwordCheck')?.dirty || userForm.get('passwordCheck')?.touched)">
