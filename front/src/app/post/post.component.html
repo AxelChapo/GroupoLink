@@ -2,8 +2,8 @@
   <div class="postCard__head">
     <p class="postCard__head--creator">{{post.user?.firstName}} {{post.user?.lastName}}</p>
     <div *ngIf="isAdminOrCreator == true">
-      <button [routerLink]="'/post/' + post._id" class="postCard__head--edit"><i class="fa-solid fa-pencil"></i></button> <!--appel de la fonction d'édition d'un post-->
-      <button (click)="postDelete()" class="postCard__head--delete"><i class="fa-solid fa-trash"></i></button> <!--appel de la fonction de supression d'un post-->
+      <button [routerLink]="'/post/' + post._id" class="postCard__head--edit" aria-label="editer le post"><i class="fa-solid fa-pencil"></i></button> <!--appel de la fonction d'édition d'un post-->
+      <button (click)="postDelete()" class="postCard__head--delete" aria-label="supprimer le post"><i class="fa-solid fa-trash"></i></button> <!--appel de la fonction de supression d'un post-->
     </div>
   </div>
   <p class="postCard__txt">{{ post.textContent }}</p>
@@ -12,7 +12,7 @@
   </div>
   <div class="postCard__data">
     <div [ngClass]="{ liked: hasLiked() }" class="postCard__data--likes">
-      <button (click)="onLike()"><i class="fa-solid fa-heart"></i></button><!--appel de la fonction de gestion des likes-->
+      <button (click)="onLike()"><i class="fa-solid fa-heart" aria-label="liker le post"></i></button><!--appel de la fonction de gestion des likes-->
       <p>{{post.userLikes.length}}</p>
     </div>
 

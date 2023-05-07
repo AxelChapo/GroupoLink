@@ -7,13 +7,16 @@
         <input type="file" name="user_img" formControlName="image" (change)="onFileSelected($event)" #imgInput>
         <div>
           {{fileName || "Aucun fichier téléversé."}}
-          <i (click)="uploadImg()" class="fa-solid fa-camera"></i>
+          <i (click)="uploadImg()" class="fa-solid fa-camera" ></i>
         </div>
       </div>
       <div class="create__submit">
-        <button (click)="postSubmit()">Envoyer</button> <!--appel de la fonction d'envoi de post-->
+        <button (click)="postSubmit()" aria-label="envoyer le post">Envoyer</button> <!--appel de la fonction d'envoi de post-->
       </div>
     </form>
+    <div class="imgPreview">
+      <img [src]="imageSrc" *ngIf="imageSrc">
+    </div>
   </div>
   <div class="main__feed">
     <app-post *ngFor="let post of posts" [post]="post" (onUpdate)="refreshPost()"></app-post> <!-- affichage des posts -->

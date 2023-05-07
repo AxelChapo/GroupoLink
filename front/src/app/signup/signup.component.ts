@@ -58,6 +58,10 @@ export class SignupComponent implements OnInit {
           throw new Error();
           //afficher message erreur
         }
+        else if (response.status === 400) {
+          alert("adresse mail déjà utilisée")
+          throw new Error();
+        }
         return response.json();
       }).then(response => {
         // @ts-ignore

@@ -11,8 +11,11 @@
         </div>
       </div>
     </form>
+    <div class="modify__imgPreview">
+      <img [src]="imageSrc" *ngIf="imageSrc">
+    </div>
     <div class="modify__submit">
-      <button (click)="submitModifiedPost()">Modifier</button>
+      <button (click)="submitModifiedPost()" aria-label="envoyer le post modifié">Modifier</button>
     </div>
   </div>
 </div>

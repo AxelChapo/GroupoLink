@@ -1,9 +1,9 @@
 <header class="main">
   <div class="main__logo">
-    <a routerLink="/post-feed" class="main__logo--img"><img src="assets/img/icon-left-font-monochrome-black.svg" alt="Logo de la société Groupomania"></a>
+    <a routerLink="/post-feed" class="main__logo--img" aria-label="post feed"><img src="assets/img/icon-left-font-monochrome-black.svg" alt="Logo de la société Groupomania"></a>
   </div>
   <nav class="main__button">
-    <a routerLink="" (click)="disconnect()"><i class="fa-solid fa-right-from-bracket"></i></a>
-    <a routerLink="user-profile"><i class="fa-solid fa-user"></i></a>
+    <a routerLink="" (click)="disconnect()" aria-label="disconnect"><i class="fa-solid fa-right-from-bracket"></i></a>
+    <a routerLink="user-profile" aria-label="user profile"><i class="fa-solid fa-user"></i></a>
   </nav>
 </header>

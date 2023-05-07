@@ -17,6 +17,7 @@ export class PostFeedComponent implements OnInit {
   posts!: Post[];
   fileName =  '';
   image!: File;
+  imageSrc!: string;
 
   @ViewChild('imgInput') imgInput: ElementRef | undefined;
 
@@ -51,11 +52,18 @@ export class PostFeedComponent implements OnInit {
   }
 
   onFileSelected(event: Event) {
+    const reader = new FileReader();
     // @ts-ignore
-    const file:File = event.target.files[0];
-    if (file) {
+    if(event.target.files && event.target.files.length) {
+      // @ts-ignore
+      const [file] = event?.target?.files;
       this.image = file;
       this.fileName = file.name;
+      reader.readAsDataURL(file);
+
+      reader.onload = () => {
+        this.imageSrc = reader.result as string;
+      };
     }
   }
 }
