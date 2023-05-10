@@ -4,6 +4,7 @@ import { PostService } from "../core/services/post.service";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { AuthService } from "../core/services/auth.service";
 import { HttpClient } from "@angular/common/http";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-post-feed',
@@ -18,6 +19,7 @@ export class PostFeedComponent implements OnInit {
   fileName =  '';
   image!: File;
   imageSrc!: string;
+  textValue!: string;
 
   @ViewChild('imgInput') imgInput: ElementRef | undefined;
 
@@ -44,11 +46,14 @@ export class PostFeedComponent implements OnInit {
   postSubmit() {
     this.postService.postSubmit(this.postDeposit.value, this.image).then(post => {
       this.refreshPost();
-    });
+    })
   }
 
   refreshPost() {
     this.postService.getAllPosts().then(posts => this.posts = posts);
+    this.postDeposit.setValue({textContent: '', image: ''});
+    this.imageSrc = ' ';
+    this.fileName = '';
   }
 
   onFileSelected(event: Event) {
