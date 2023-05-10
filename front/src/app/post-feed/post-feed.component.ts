@@ -46,7 +46,7 @@ export class PostFeedComponent implements OnInit {
   postSubmit() {
     this.postService.postSubmit(this.postDeposit.value, this.image).then(post => {
       this.refreshPost();
-    })
+    });
   }
 
   refreshPost() {

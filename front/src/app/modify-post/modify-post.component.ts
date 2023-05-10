@@ -49,8 +49,8 @@ export class ModifyPostComponent implements OnInit {
   submitModifiedPost() {
     this.postService.submitModifiedPost({
       ...this.post,
-      ...this.postModify.value
-    }).then(post => this.router.navigate(["/post-feed"]));
+      ...this.postModify.value,
+    }).then(post => console.log(this.postModify.value)/**this.router.navigate(["/post-feed"])**/);
   }
 
   onFileSelected(event: Event) {
@@ -62,11 +62,9 @@ export class ModifyPostComponent implements OnInit {
       this.image = file;
       this.fileName = file.name;
       reader.readAsDataURL(file);
-
       reader.onload = () => {
         this.imageSrc = reader.result as string;
       };
-
     }
   }
 }

@@ -48,6 +48,7 @@ export class PostService {
 
   submitModifiedPost(post: Post) {
     //appel de l'API/post
+    console.log(post);
     return fetch('http://localhost:3000/API/post/' + post._id, {
       method: 'PUT',
       headers: {

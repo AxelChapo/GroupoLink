@@ -64,6 +64,7 @@ exports.deletePost = (req, res, next) => {
 };
 
 exports.modifyPost = (req, res, next) => {
+    console.log(req);
     Post.findOne({_id: req.params.id}).then(post => {
         if (post.user.valueOf() != req.auth.userId && !req.auth.admin) {
             res.status(401).json({message: 'Not authorized'});
