@@ -64,7 +64,6 @@ exports.deletePost = (req, res, next) => {
 };
 
 exports.modifyPost = (req, res, next) => {
-    console.log(req);
     Post.findOne({_id: req.params.id}).then(post => {
         if (post.user.valueOf() != req.auth.userId && !req.auth.admin) {
             res.status(401).json({message: 'Not authorized'});
@@ -75,6 +74,7 @@ exports.modifyPost = (req, res, next) => {
                     ...JSON.parse(req.body.post),
                     imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
                 } : {...req.body};
+
             Post.updateOne({_id: req.params.id}, {...postObject, _id: req.params.id})
                 .then(() => res.status(200).json({message: 'Post mis à jour !'}))
                 .catch(error => res.status(400).json({error}));

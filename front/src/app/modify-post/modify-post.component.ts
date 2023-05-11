@@ -49,8 +49,10 @@ export class ModifyPostComponent implements OnInit {
   submitModifiedPost() {
     this.postService.submitModifiedPost({
       ...this.post,
-      ...this.postModify.value,
-    }).then(post => this.router.navigate(["/post-feed"]));
+      ...this.postModify.value
+    }, this.image).then(post => {
+      this.router.navigate(["/post-feed"])
+    })
   }
 
   onFileSelected(event: Event) {

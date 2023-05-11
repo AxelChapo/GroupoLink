@@ -46,18 +46,19 @@ export class PostService {
     }).then(response => response.json())
   }
 
-  submitModifiedPost(post: Post) {
+  submitModifiedPost(post: Post, image: any) {
     //appel de l'API/post
-    console.log(post);
+    const formModify = new FormData();
+    formModify.append('post', JSON.stringify(post));
+    formModify.append('image', image);
     return fetch('http://localhost:3000/API/post/' + post._id, {
       method: 'PUT',
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('userLoginData') ?? '{}').token
       },
-      body: JSON.stringify(post), //envoi du post en JSON
-    }).then(response => response)
+      body: formModify //envoi du post en JSON
+    }).then(response => response.json())
   }
 
   postDelete(post: Post) {
